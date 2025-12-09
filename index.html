@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Final :) | Visualizador de AFD</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=2">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-icon">⬡</span> PROYECTO <span class="highlight">FINAL :)</span>
+            </div>
+            <div class="nav-links">
+                <button class="nav-btn active" data-module="email">
+                    <span class="btn-icon">✉</span> Validador de Email
+                </button>
+                <button class="nav-btn" data-module="modulo3">
+                    <span class="btn-icon">∑</span> Múltiplos de 3
+                </button>
+            </div>
+        </nav>
+
+        <!-- Main Content Grid -->
+        <main class="main-grid">
+            <!-- Left Panel: Controls & Grammar -->
+            <aside class="control-panel glass-panel">
+                <div class="panel-header">
+                    <h2><span class="icon">⚙</span> CONTROLES</h2>
+                </div>
+
+                <div class="input-group">
+                    <label for="inputString">Cadena de Entrada</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="inputString" placeholder="Escribe aquí..." autocomplete="off">
+                        <div class="input-focus-border"></div>
+                    </div>
+                    <div id="validationStatus" class="status-badge ready">ESPERANDO INPUT</div>
+                </div>
+
+                <div class="controls-group">
+                    <label>Velocidad de Simulación</label>
+                    <div class="slider-container">
+                        <span class="speed-label">1x</span>
+                        <input type="range" id="speedSlider" min="1" max="5" step="0.5" value="1">
+                        <span class="speed-label">5x</span>
+                    </div>
+                    <div class="button-row">
+                        <button id="validateBtn" class="action-btn primary">
+                            <span class="btn-text">VALIDAR</span>
+                            <div class="btn-glitch"></div>
+                        </button>
+                        <button id="stepBtn" class="action-btn secondary">
+                            <span class="btn-text">PASO A PASO</span>
+                        </button>
+                        <button id="resetBtn" class="action-btn danger">
+                            <span class="btn-text">RESET</span>
+                        </button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Center Panel: Visualization Canvas -->
+            <section class="viz-panel glass-panel">
+                <div class="viz-header">
+                    <h2 id="vizTitle">VISUALIZACIÓN DE ESTADOS</h2>
+                    <div class="viz-controls">
+                        <div class="live-indicator">
+                            <span class="dot"></span> LIVE RENDER
+                        </div>
+                        <button id="grammarBtn" class="sm-btn">
+                            <span class="icon">λ</span> VER GRAMÁTICA
+                        </button>
+                    </div>
+                </div>
+                <div class="canvas-container" id="canvasContainer">
+                    <canvas id="automatonCanvas"></canvas>
+                    <div class="overlay-message" id="overlayMessage">SISTEMA LISTO</div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Bottom Panel: Debug Log -->
+        <footer class="log-panel glass-panel">
+            <div class="panel-header compact">
+                <h3><span class="icon">terminal</span> REGISTRO DE EJECUCIÓN</h3>
+                <button id="clearLog" class="icon-btn" title="Limpiar Log">🗑</button>
+            </div>
+            <div class="log-content custom-scrollbar" id="logConsole">
+                <div class="log-entry system">
+                    <span class="timestamp">[INIT]</span> Sistema inicializado correctamente. Esperando entrada de
+                    usuario...
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal for Grammar -->
+    <div id="grammarModal" class="modal-overlay">
+        <div class="modal-content glass-panel">
+            <div class="modal-header">
+                <h3><span class="icon">λ</span> GRAMÁTICA REGULAR</h3>
+                <button id="closeModal" class="icon-btn close-modal">✕</button>
+            </div>
+            <div class="grammar-display custom-scrollbar" id="grammarOutput">
+                <!-- Grammar rules will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
